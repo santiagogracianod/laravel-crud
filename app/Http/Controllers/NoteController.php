@@ -26,11 +26,24 @@ class NoteController extends Controller
      }
 
      public function store(Request $request) {
-        $note = new Note();
+        /* $note = new Note();
         $note->title = $request->title;
         $note->description = $request->description;
-        $note->save();
+        $note->save(); */
+
+        /* Note::create([
+            'title' => $request->title,
+            'description' => $request->description
+        ]); */
+
+        //if the fields in the form are the same as the fields in the database, we can use the following code:
+        Note::create($request->all());
 
         return redirect()->route('note.index');
+     }
+
+     public function edit(Note $note)
+     {
+        return view('notes.edit', compact('note'));
      }
 }
