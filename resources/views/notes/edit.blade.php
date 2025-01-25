@@ -5,7 +5,8 @@
 @section('content')
     <a href={{ route('note.index') }}>Back</a>
     <h1>Edit note</h1>
-    <form action="" method="">
+    <form action={{ route('note.update', $note->id) }} method="POST">
+        @method('PUT')
         @csrf
         @method('PUT')
         <label for="title">Title</label>
