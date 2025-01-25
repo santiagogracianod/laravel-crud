@@ -29,15 +29,10 @@ class NoteController extends Controller
 
      public function store(Request $request): RedirectResponse
      {
-        /* $note = new Note();
-        $note->title = $request->title;
-        $note->description = $request->description;
-        $note->save(); */
-
-        /* Note::create([
-            'title' => $request->title,
-            'description' => $request->description
-        ]); */
+        $request->validate([
+            'title' => 'required|max:20|min:3',
+            'description' => 'required|max:255|min:10'
+        ]);
 
         //if the fields in the form are the same as the fields in the database, we can use the following code:
         Note::create($request->all());
@@ -52,10 +47,10 @@ class NoteController extends Controller
 
      public function update(Request $request, Note $note): RedirectResponse
      {
-        /* $note = Note::find($id);
-        $note->title = $request->title;
-        $note->description = $request->description;
-        $note->save(); */
+        $request->validate([
+            'title' => 'required|max:20|min:3',
+            'description' => 'required|max:255|min:10'
+        ]);
 
         $note->update($request->all());
         return redirect()->route('note.index');
