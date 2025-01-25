@@ -9,6 +9,7 @@
     </title>
 </head>
 <body>
+    @include('layouts._partials.messages')
     <main>
         @yield('content')
     </main>
