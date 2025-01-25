@@ -3,7 +3,7 @@
 
 @section('content')
     <a href={{ route('note.index') }}>Back</a>
-    <h1>Note datails</h1>
+    <h1>Note details</h1>
     <h3> Title:
         <strong> {{ $note->title }} </strong>
     </h3>
